@@ -1,0 +1,12 @@
+{
+  "data": {
+    "products":[
+      {"id":1,"name":"soap", "price":"5.50", "category":"1", "discount":"0.00","active":"1"},
+      {"id":2,"name":"rice", "price":"10.50", "category":"1", "discount":"0.00","active":"1"},
+      {"id":3,"name":"milk", "price":"18.50", "category":"1", "discount":"0.00","active":"1"},
+      {"id":4,"name":"brush", "price":"4.50", "category":"1", "discount":"1.00","active":"1"},
+      {"id":5,"name":"banana", "price":"3.50", "category":"1", "discount":"2.00","active":"1"},
+      {"id":6,"name":"tomato", "price":"8.50", "category":"1", "discount":"0.00","active":"1"}
+    ]
+  }
+}
