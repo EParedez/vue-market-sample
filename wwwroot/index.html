@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <!--link rel="stylesheet" type="text/css" href="fontawesome/web-fonts-with-css/css/fontawesome-all.min.css"!-->
     <style>
         i.mysize {font-size: 10em;}
     </style>
@@ -100,7 +100,8 @@
                         <td>{{ prod.price }}</td>
                         <td>{{ prod.category }}</td>
                         <td>{{ prod.discount }}</td>
-                        <td v-bind:class="prod.active == 1 ? 'fa fa-check' :''">{{ prod.status }}</td>
+
+                        <td class="fa" v-bind:class="{'fa-check-circle':prod.active==1,'fa-times-circle':prod.active==0}"></td>
                     </tr>
                     </tbody>
 
