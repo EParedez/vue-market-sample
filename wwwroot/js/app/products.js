@@ -1,9 +1,13 @@
 
 new Vue({
     'el':'.container-fluid',
+    components:{
+        Element: ELEMENT
+    },
     data: function () {
         return {
-            products: []
+            products: [],
+            dialogVisible: true
         }
     },
     created: function () {
@@ -13,5 +17,10 @@ new Vue({
             console.log(datas)
             context.products = datas.data.products
         });
+    },
+    methods:  {
+        handleClose: function(done) {
+           console.log('close modal')
+        }
     }
 });

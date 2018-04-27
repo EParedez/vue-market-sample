@@ -109,6 +109,19 @@
             </div>
         </main>
     </div>
+
+    <el-dialog
+            title="Tips"
+            :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose">
+        <span>This is a message</span>
+        <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">Cancel</el-button>
+    <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
+  </span>
+    </el-dialog>
+
 </div>
 
 
@@ -131,6 +144,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
 <script src="js/lib/vue.min.js"></script>
+<!-- import CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="js/app/products.js"></script>
 <script>
 </script>
