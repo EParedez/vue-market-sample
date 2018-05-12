@@ -91,6 +91,7 @@
                         <th>Category</th>
                         <th>Discount</th>
                         <th>Status</th>
+                        <th>Botones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -100,8 +101,8 @@
                         <td>{{ prod.price }}</td>
                         <td>{{ prod.category }}</td>
                         <td>{{ prod.discount }}</td>
-
                         <td class="fa" v-bind:class="{'fa-check-circle':prod.active==1,'fa-times-circle':prod.active==0}"></td>
+                        <td> <el-button type="button" @click="dialogBorrarVisible = true">Borrar</el-button><el-button type="button" @click="dialogModificarVisible = true">Modificar</el-button></td>
                     </tr>
                     </tbody>
 
@@ -110,15 +111,31 @@
         </main>
     </div>
 
+    
+<!--- Ventana Modal para Borrar-->
     <el-dialog
-            title="Tips"
-            :visible.sync="dialogVisible"
+            title="¿Quieres Eliminar?"
+            :visible.sync="dialogBorrarVisible"
             width="30%"
             :before-close="handleClose">
-        <span>This is a message</span>
+        <span>Estas eligiendo la opcion borrar</span>
         <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
+    <el-button @click="dialogBorrarVisible = false">Cancel</el-button>
+    <el-button type="primary" @click="dialogBorrarVisible = false">Confirm</el-button>
+  </span>
+    </el-dialog>
+
+    
+<!--- Ventana Modal para Modificar-->
+    <el-dialog
+            title="¿Quieres Modificar?"
+            :visible.sync="dialogModificarVisible"
+            width="30%"
+            :before-close="handleClose">
+        <span>Estas eligiendo la opcion editar</span>
+        <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogModificarVisible = false">Cancel</el-button>
+    <el-button type="primary" @click="dialogModificarVisible = false">Confirm</el-button>
   </span>
     </el-dialog>
 
