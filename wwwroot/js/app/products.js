@@ -10,7 +10,31 @@ new Vue({
             dialogNuevoVisible: false,
             dialogBorrarVisible: false,
             dialogModificarVisible: false,
-            form: true,
+            formNuevo: {
+                name:'',
+                price:undefined,
+                category:undefined,
+                discount:undefined,
+                active:undefined
+            },
+            rulesNuevoProducto:{
+                name: [
+                    { required: true, message: 'El nombre es obligatorio', trigger: 'change' },
+                ],
+                price:[
+                    { required: true, message: 'El precio es obligatorio', trigger: 'change' },
+                ],
+                category:[
+                    { required: true, message: 'La categoria es obligatorio', trigger: 'change' },
+                ],
+                
+                active:[
+                    { required: true, message: 'El status es obligatorio', trigger: 'change' },
+                ]
+            },
+            form:{
+
+            },
             formLabelWidth: 100
         }
     },
@@ -25,6 +49,13 @@ new Vue({
     methods:  {
         handleClose: function(done) {
            console.log('close modal')
+        },
+        addProduct: function () {
+            this.$refs['formNuevoProducto'].validate((result) => {
+                 if(result){
+                    console.log('es valido');
+                 }   
+            }) ;
         }
     }
 });
