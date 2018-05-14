@@ -81,6 +81,44 @@
 
 
             <h2>Section title</h2>
+
+<!--- Ventana Modal para Nuevo-->
+
+        <el-button type="primary" @click="dialogNuevoVisible = true">Nuevo</el-button>
+
+            <el-dialog title="Nuevo" :visible.sync="dialogNuevoVisible">
+                <el-form :model="form">
+
+                    <el-form-item label="Nombre" :label-width="formLabelWidth">
+                        <el-input v-model="form.name" auto-complete="off"></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="Precio" :label-width="formLabelWidth">
+                        <el-input v-model="form.price" auto-complete="off"></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="Categoria" :label-width="formLabelWidth">
+                        <el-input v-model="form.category" auto-complete="off"></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="Descuento" :label-width="formLabelWidth">
+                        <el-input v-model="form.discount" auto-complete="off"></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="Status" :label-width="formLabelWidth">
+                        <el-select v-model="form.active" placeholder="Por Favor, seleccione un estado">
+                            <el-option label="Activo" value= true></el-option>
+                            <el-option label="Inactivo" value= false></el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-form>
+
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogNuevoVisible = false">Cancel</el-button>
+                <el-button type="primary" @click="dialogNuevoVisible = false">Agregar</el-button>
+                </span>
+            </el-dialog>
+
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -102,7 +140,7 @@
                         <td>{{ prod.category }}</td>
                         <td>{{ prod.discount }}</td>
                         <td class="fa" v-bind:class="{'fa-check-circle':prod.active==1,'fa-times-circle':prod.active==0}"></td>
-                        <td> <el-button type="button" @click="dialogBorrarVisible = true">Borrar</el-button><el-button type="button" @click="dialogModificarVisible = true">Modificar</el-button></td>
+                        <td> <el-button type="danger" @click="dialogBorrarVisible = true">Borrar</el-button><el-button type="button" @click="dialogModificarVisible = true">Modificar</el-button></td>
                     </tr>
                     </tbody>
 
@@ -118,25 +156,45 @@
             :visible.sync="dialogBorrarVisible"
             width="30%"
             :before-close="handleClose">
-        <span>Estas eligiendo la opcion borrar</span>
+        <span>¿Está seguro que quiere borrar la entrada?</span>
         <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogBorrarVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="dialogBorrarVisible = false">Confirm</el-button>
+    <el-button @click="dialogBorrarVisible = false">Cancelar</el-button>
+    <el-button type="danger" @click="dialogBorrarVisible = false">Confirmar</el-button>
   </span>
     </el-dialog>
 
     
 <!--- Ventana Modal para Modificar-->
-    <el-dialog
-            title="¿Quieres Modificar?"
-            :visible.sync="dialogModificarVisible"
-            width="30%"
-            :before-close="handleClose">
-        <span>Estas eligiendo la opcion editar</span>
+    <el-dialog title="¿Quiere Modificar?" :visible.sync="dialogModificarVisible">
+        <el-form :model="form">
+            <p>Por favor escriba los nuevos datos en los campos</p>
+            <el-form-item label="Nombre" :label-width="formLabelWidth">
+                <el-input v-model="form.name" auto-complete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Precio" :label-width="formLabelWidth">
+                <el-input v-model="form.price" auto-complete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Categoria" :label-width="formLabelWidth">
+                <el-input v-model="form.category" auto-complete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Descuento" :label-width="formLabelWidth">
+                <el-input v-model="form.discount" auto-complete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Status" :label-width="formLabelWidth">
+                <el-select v-model="form.active" placeholder="Por Favor, seleccione un estado">
+                    <el-option label="Activo" value= true></el-option>
+                    <el-option label="Inactivo" value= false></el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
         <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogModificarVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="dialogModificarVisible = false">Confirm</el-button>
-  </span>
+            <el-button @click="dialogModificarVisible = false">Cancelar</el-button>
+            <el-button type="primary" @click="dialogModificarVisible = false">Confirmar</el-button>
+        </span>
     </el-dialog>
 
 </div>

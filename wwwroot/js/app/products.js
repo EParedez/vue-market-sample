@@ -7,8 +7,11 @@ new Vue({
     data: function () {
         return {
             products: [],
+            dialogNuevoVisible: false,
             dialogBorrarVisible: false,
-            dialogModificarVisible: false
+            dialogModificarVisible: false,
+            form: true,
+            formLabelWidth: 100
         }
     },
     created: function () {
