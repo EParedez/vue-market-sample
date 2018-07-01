@@ -165,27 +165,28 @@
 
     
 <!--- Ventana Modal para Modificar-->
-    <el-dialog title="¿Quiere Modificar?" :visible.sync="dialogModificarVisible">
-        <el-form :model="form">
+    <el-dialog title="¿Quiere Modificar?" :visible.sync="dialogModificarVisible" :before-close="handleClose">
+        <el-form :model="formModificar" ref="formModificarProducto" :rules="rulesModificarProducto">
             <p>Por favor escriba los nuevos datos en los campos</p>
-            <el-form-item label="Nombre" :label-width="formLabelWidth">
-                <el-input v-model="form.name" auto-complete="off"></el-input>
+
+            <el-form-item label="Nombre" :label-width="formLabelWidth" prop="name">
+                <el-input v-model="formModificar.name" auto-complete="off" ></el-input>
             </el-form-item>
 
-            <el-form-item label="Precio" :label-width="formLabelWidth">
-                <el-input v-model="form.price" auto-complete="off"></el-input>
+            <el-form-item label="Precio" :label-width="formLabelWidth" prop="price">
+                <el-input v-model="formModificar.price" auto-complete="off"></el-input>
             </el-form-item>
 
-            <el-form-item label="Categoria" :label-width="formLabelWidth">
-                <el-input v-model="form.category" auto-complete="off"></el-input>
+            <el-form-item label="Categoria" :label-width="formLabelWidth" prop="category">
+                <el-input v-model="formModificar.category" auto-complete="off"></el-input>
             </el-form-item>
 
-            <el-form-item label="Descuento" :label-width="formLabelWidth">
-                <el-input v-model="form.discount" auto-complete="off"></el-input>
+            <el-form-item label="Descuento" :label-width="formLabelWidth" prop="discount">
+                <el-input v-model="formModificar.discount" auto-complete="off"></el-input>
             </el-form-item>
 
-            <el-form-item label="Status" :label-width="formLabelWidth">
-                <el-select v-model="form.active" placeholder="Por Favor, seleccione un estado">
+            <el-form-item label="Status" :label-width="formLabelWidth" prop="active">
+                <el-select v-model="formModificar.active" placeholder="Por Favor, seleccione un estado">
                     <el-option label="Activo" value="true"></el-option>
                     <el-option label="Inactivo" value="false"></el-option>
                 </el-select>
@@ -193,7 +194,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="dialogModificarVisible = false">Cancelar</el-button>
-            <el-button type="primary" @click="dialogModificarVisible = false">Confirmar</el-button>
+            <el-button type="primary">Agregar</el-button>
         </span>
     </el-dialog>
 

@@ -31,6 +31,30 @@ new Vue({
                 active:[
                     { required: true, message: 'El status es obligatorio', trigger: 'change' },
                 ]
+
+            },
+
+            formModificar:{
+                name:'',
+                price:undefined,
+                category:undefined,
+                discount:undefined,
+                active:undefined
+            },
+            rulesModificarProducto:{
+                name: [
+                    { required: true, message: 'El nombre es obligatorio para modificar', trigger: 'change' },
+                ],
+                price:[
+                    { required: true, message: 'El precio es obligatorio para modificar', trigger: 'change' },
+                ],
+                category:[
+                    { required: true, message: 'La categoria es obligatorio para modificar', trigger: 'change' },
+                ],
+                
+                active:[
+                    { required: true, message: 'El status es obligatorio para modificar', trigger: 'change' },
+                ]
             },
             form:{
 
@@ -38,6 +62,7 @@ new Vue({
             formLabelWidth: 100
         }
     },
+
     created: function () {
         console.log('created')
         var context = this;
@@ -57,5 +82,14 @@ new Vue({
                  }   
             }) ;
         }
-    }
+    },
+
+    modificated: function () {
+        console.log('creado')
+        var context = this;
+        $.get('./../wwwroot/data/products.json', {}, function (datas) {
+            console.log(datas)
+            context.products = datas.data.products
+        });
+    }, 
 });
